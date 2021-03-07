@@ -10,7 +10,7 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
 
-    
+    //just tryoing the commit
     var tweetArray = [NSDictionary]()
     var numberOfTweets : Int!
     
@@ -56,7 +56,7 @@ class HomeTableViewController: UITableViewController {
         
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
         
-        cell.userNameLabel.text = tweetArray[indexPath.row]["user"] as! NSDictionaryuser["name"] as? String
+        cell.userNameLabel.text = user["name"] as? String
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
         
         let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
