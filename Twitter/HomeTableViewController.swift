@@ -35,9 +35,10 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func loadTweet(){
+        numberOfTweets = 20
         
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = ["count": 10]
+        let myParams = ["count": numberOfTweets]
         
         
         TwitterAPICaller.client?.getDictionariesRequest(url: myUrl , parameters: myParams, success: { (tweets: [NSDictionary]) in
@@ -53,6 +54,33 @@ class HomeTableViewController: UITableViewController {
         }, failure: { (Error) in
             print("Could not recieve tweet")
         })
+    }
+    
+    func loadMoreTweets(){
+        numberOfTweets = numberOfTweets + 20
+        
+        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let myParams = ["count": numberOfTweets]
+        
+        
+        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl , parameters: myParams, success: { (tweets: [NSDictionary]) in
+            self.tweetArray.removeAll()
+            for tweet in tweets{
+                self.tweetArray.append(tweet)
+            }
+            
+            self.tableView.reloadData()
+            
+        }, failure: { (Error) in
+            print("Could not recieve tweet")
+        })
+    }
+    
+    //when they get ot the end ofthe page run more tweets
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == tweetArray.count{
+            loadMoreTweets()
+        }
     }
     
    
