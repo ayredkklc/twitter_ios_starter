@@ -14,9 +14,13 @@ class HomeTableViewController: UITableViewController {
     var tweetArray = [NSDictionary]()
     var numberOfTweets : Int!
     
+    let myRefreshControl = UIRefreshControl()
+    
     @IBAction func onLogout(_ sender: Any) {
         TwitterAPICaller.client?.logout()
         self.dismiss(animated: true, completion: nil)
+        myRefreshControl.addTarget(self, action: #selector(loadTweet), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
     }
     
     override func viewDidLoad() {
@@ -30,7 +34,7 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func loadTweet(){
+    @objc func loadTweet(){
         
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let myParams = ["count": 10]
@@ -43,6 +47,9 @@ class HomeTableViewController: UITableViewController {
             }
             
             self.tableView.reloadData()
+            //mkaing the load button dissapear
+            self.myRefreshControl.endRefreshing()
+            
         }, failure: { (Error) in
             print("Could not recieve tweet")
         })
