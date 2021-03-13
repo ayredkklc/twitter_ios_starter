@@ -29,6 +29,7 @@ class HomeTableViewController: UITableViewController {
         tableView.refreshControl = myRefreshControl
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 150
+        
         //loadTweet()
 
         // Uncomment the following line to preserve selection between presentations

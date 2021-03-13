@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		CD4BE14525F3304A005912FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BE14425F3304A005912FA /* LoginViewController.swift */; };
 		CD4BE14825F335D3005912FA /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BE14725F335D3005912FA /* HomeTableViewController.swift */; };
 		CD4BE14B25F3441D005912FA /* TweetCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BE14A25F3441D005912FA /* TweetCellTableViewCell.swift */; };
+		CD76B95425FD2E3600853B19 /* RSKPlaceholderTextView in Frameworks */ = {isa = PBXBuildFile; productRef = CD76B95325FD2E3600853B19 /* RSKPlaceholderTextView */; };
 		CDFDFE4125F5B49D00258D94 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFDFE4025F5B49D00258D94 /* TweetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504CFC1F641D05B5D40A0F17 /* Pods_Twitter.framework in Frameworks */,
+				CD76B95425FD2E3600853B19 /* RSKPlaceholderTextView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +120,9 @@
 			dependencies = (
 			);
 			name = Twitter;
+			packageProductDependencies = (
+				CD76B95325FD2E3600853B19 /* RSKPlaceholderTextView */,
+			);
 			productName = Twitter;
 			productReference = 6EBCF52221DF07FC00451C03 /* Twitter.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +152,9 @@
 				Base,
 			);
 			mainGroup = 6EBCF51921DF07FC00451C03;
+			packageReferences = (
+				CD76B95225FD2E3600853B19 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */,
+			);
 			productRefGroup = 6EBCF52321DF07FC00451C03 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -415,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD76B95225FD2E3600853B19 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ruslanskorb/RSKPlaceholderTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD76B95325FD2E3600853B19 /* RSKPlaceholderTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD76B95225FD2E3600853B19 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */;
+			productName = RSKPlaceholderTextView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6EBCF51A21DF07FC00451C03 /* Project object */;
 }

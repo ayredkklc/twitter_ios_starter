@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RSKPlaceholderTextView
 
-class TweetViewController: UIViewController {
+class TweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: UITextView!
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -32,9 +33,30 @@ class TweetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tweetTextView.becomeFirstResponder()
-
+        tweetTextView.delegate = self
+        //tweetTextView.becomeFirstResponder()
+        
+        
+        tweetTextView.text = "What's in your mind today?"
+        tweetTextView.textColor = UIColor.lightGray
+        
+        
+        
         // Do any additional setup after loading the view.
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+        if tweetTextView.textColor == UIColor.lightGray {
+            tweetTextView.text = ""
+            tweetTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if tweetTextView.text.isEmpty {
+            tweetTextView.text = "What's in your mind today?"
+            tweetTextView.textColor = UIColor.lightGray
+        }
     }
     
 
